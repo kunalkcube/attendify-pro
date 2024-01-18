@@ -21,7 +21,7 @@ app.use('/styles', express.static('styles'));
 app.use('/scripts', express.static('scripts'));
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/pew', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
