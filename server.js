@@ -29,7 +29,14 @@ db.once('open', () => {
 });
 
 // Use sessions to keep track of user authentication status
-app.use(session({ secret: 'your-secret-key', resave: true, saveUninitialized: true }));
+app.use(session({
+    secret: 'your-secret-key',
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    },
+  }));
 
 // Initialize Passport
 app.use(passport.initialize());
