@@ -7,6 +7,7 @@ Attendify Pro is a web app that simplifies class attendance management for stude
 - HTML
 - CSS
 - JavaScript
+- Tailwind CSS
 - EJS (Embedded JavaScript)
 - Express.js
 - MongoDB (as the database)
