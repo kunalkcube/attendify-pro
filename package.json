@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
+    "build": "yarn",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx postcss styles/input.css -o styles/output.css --watch"
+    "css": "npx postcss styles/input.css -o styles/output.css --watch"
   },
   "keywords": [],
   "author": "",
