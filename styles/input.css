@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.transparent-bg {
+     background-color: rgba(255, 255, 255, 0.3);
+     backdrop-filter: blur(10px);
+}
+
+.gradient-text {
+     background: rgb(244, 87, 155);
+     background: linear-gradient(90deg, rgba(244, 87, 155, 1) 0%, rgba(120, 112, 255, 1) 100%);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+}

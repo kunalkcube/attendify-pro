@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= user.displayName %> Profile
+    </title>
+    <link rel="stylesheet" href="/styles/output.css">
+</head>
+
+<body>
+    <div class="bg-white">
+        <div class="absolute inset-x-0 top-0 z-50 min-h-screen px-4 py-6 flex flex-col justify-start items-center">
+            <div class="user-welcome max-w-screen-lg w-full flex flex-col justify-start items-start">
+                <h2 class="text-2xl font-bold">Welcome 👋</h2>
+                <h1 class="gradient-text text-3xl font-extrabold mt-2">
+                    <%= user.displayName %>
+                </h1>
+                <p class="text-lg font-medium text-gray-700 mt-4">
+                    Thank you for joining us! We're thrilled to have you on board. Your journey with Attendify Pro
+                    begins here.
+                </p>
+            </div>
+            <div class="user-info max-w-screen-lg w-full flex flex-col justify-start items-start mt-12">
+                <h2 class="text-2xl font-bold">Your Profile</h2>
+                <form class="w-full max-w-screen-md mt-5" method="post" action="/save-profile">
+                    <div class="mb-3">
+                        <label for="displayName"
+                            class="inline-block mb-1 text-sm font-medium text-white bg-[#ff65a5] px-3 py-1 rounded-lg">Your
+                            name</label>
+                        <input type="text" id="displayName"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2 focus:outline-1 focus:outline-[#a19bfc]"
+                            value="<%= user.displayName %>" name="displayName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email"
+                            class="inline-block mb-1 text-sm font-medium text-white bg-[#ff65a5] px-3 py-1 rounded-lg">Your
+                            email</label>
+                        <input type="email" id="email"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2 focus:outline-1 focus:outline-[#a19bfc]"
+                            value="<%= user.email %>" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone"
+                            class="inline-block mb-1 text-sm font-medium text-white bg-[#ff65a5] px-3 py-1 rounded-lg">Your
+                            phone</label>
+                        <input type="tel" id="phone"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2 focus:outline-1 focus:outline-[#a19bfc]"
+                            placeholder="Enter your phone" value="<%= user.phone %>" pattern="[6-9]\d{9}" name="phone"
+                            required>
+                    </div>
+                    <!-- Add a hidden field to store the user's current role -->
+                    <input type="hidden" name="currentRole" value="<%= user.role %>">
+                    <div class="mb-3">
+                        <label for="role"
+                            class="inline-block mb-1 text-sm font-medium text-white bg-[#ff65a5] px-3 py-1 rounded-lg">Select
+                            your
+                            role</label>
+                        <select id="role"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2 focus:outline-1 focus:outline-[#a19bfc]"
+                            name="role" required>
+                            <option value="Professor" <%=user.role==='Professor' ? 'selected' : '' %>>Professor</option>
+                            <option value="Integrated Master Student" <%=user.role==='Integrated Master Student'
+                                ? 'selected' : '' %>>Integrated Master Student</option>
+                        </select>
+                    </div>
+                    <div id="additional-fields"
+                        class="<%= user.role === 'Integrated Master Student' ? '' : 'hidden' %>">
+                        <div class="mb-3">
+                            <label for="rollNo"
+                                class="inline-block mb-1 text-sm font-medium text-white bg-[#ff65a5] px-3 py-1 rounded-lg">Your
+                                roll no</label>
+                            <input type="text" id="rollNo"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2 focus:outline-1 focus:outline-[#a19bfc]"
+                                value="<%= user.rollNo %>" name="rollNo" placeholder="Enter a valid roll no"
+                                pattern="US-\d{3}-\d{3}-\d{4}" required>
+                        </div>
+                        <div class="mb-5">
+                            <label for="registrationNo"
+                                class="inline-block mb-1 text-sm font-medium text-white bg-[#ff65a5] px-3 py-1 rounded-lg">Your
+                                registration no</label>
+                            <input type="text" id="registrationNo"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2 focus:outline-1 focus:outline-[#a19bfc]"
+                                value="<%= user.registrationNo %>" name="registrationNo"
+                                placeholder="Enter a valid registration no" pattern="\d{8}" required>
+                        </div>
+                    </div>
+                    <button type="submit"
+                        class="text-white bg-[#ff80b5] hover:bg-[#ff65a5] focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Save</button>
+                </form>
+            </div>
+        </div>
+        <div class="relative isolate px-6 pt-14 lg:px-8">
+            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+                aria-hidden="true">
+                <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                </div>
+            </div>
+            <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+                aria-hidden="true">
+                <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const roleSelect = document.getElementById('role');
+            const additionalFields = document.getElementById('additional-fields');
+            const rollNoInput = document.getElementById('rollNo');
+            const registrationNoInput = document.getElementById('registrationNo');
+
+            // Show or hide additional fields based on the selected role
+            roleSelect.addEventListener('change', function () {
+                if (this.value === 'Integrated Master Student') {
+                    additionalFields.classList.remove('hidden');
+                    // Enable additional fields
+                    rollNoInput.removeAttribute('disabled');
+                    registrationNoInput.removeAttribute('disabled');
+                } else {
+                    additionalFields.classList.add('hidden');
+                    // Disable additional fields
+                    rollNoInput.setAttribute('disabled', 'disabled');
+                    registrationNoInput.setAttribute('disabled', 'disabled');
+                }
+            });
+
+            // Trigger the change event on page load to handle the initial state
+            roleSelect.dispatchEvent(new Event('change'));
+        });
+    </script>
+</body>
+
+</html>
