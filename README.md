@@ -13,6 +13,8 @@ Attendify Pro is a web app that simplifies class attendance management for stude
 - Passport.js (for authentication)
 - Google OAuth 2.0
 - Mongoose (ODM for MongoDB)
+- Crypto (for generating secret keys)
+- Body-parser (middleware for handling HTTP POST requests)
 
 <!-- Footer -->
 <p align="center">Made with ❤️ by Kunal Kongkan Kashyap</p>
