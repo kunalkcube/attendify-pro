@@ -30,11 +30,11 @@ db.once('open', () => {
 
 // Use sessions to keep track of user authentication status
 app.use(session({
-    secret: 'your-secret-key',
+    secret: 'eyJzdWIiOiIxM2439dsvdhgfd9djhdsf9hgdGuy89sgyjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ',
     resave: true,
     saveUninitialized: true,
     cookie: {
-      maxAge: 7 * 24 * 60 * 60 * 1000,
+      maxAge: 365 * 24 * 60 * 60 * 1000,
     },
   }));
 
